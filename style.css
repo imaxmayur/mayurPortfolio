@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,500&family=Oswald:wght@200;300;400;500;700&display=swap');
+
+
+*,
+::before,
+::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {  /*:root points toward the html element of  the actual html file */
+
+    font-size: 62.5%;
+    /* It actually make font-size to 10px  so that it will be easy for us to use it as 1 rem */
+
+    --primary-color: #22577E
+    --secondary-color: #F6F2D4
+    --secondary-color-m: #f6f2d4a8
+    --tertiary-color: #95D1CC
+    --tertiary-color-m: #95d1cca8
+    
+}
+
+body {
+    font-family: 'Oswald', sans-serif;
+    line-height: 1.8; 
+    display: flex; /* so that sidebar one side and other thing on other side*/
+}
+
+/* Sidebar nav */
+
+.sidebar-nav {
+    position: sticky;
+    top: 0;
+    left: 0;
+    height: 100vh;
+}
+
+.sidebar-nav .container {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--primary-color);
+}
+
+.sidebar-nav .container .logo img {
+    width: calc(3vw + 3vh);
+}
