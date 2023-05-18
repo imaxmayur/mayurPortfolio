@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,700;1,500&family=Oswald:wght@200;300;400;500;700&display=swap');
 
+/*************** Reset ************/
 
 *,
 ::before,
@@ -9,16 +10,25 @@
     box-sizing: border-box;
 }
 
+ul {
+    list-style: none;
+}
+
+a:visited,
+a:active,
+a:link {
+    text-decoration: none;
+}
 :root {  /*:root points toward the html element of  the actual html file */
 
     font-size: 62.5%;
     /* It actually make font-size to 10px  so that it will be easy for us to use it as 1 rem */
 
-    --primary-color: #22577E
-    --secondary-color: #F6F2D4
-    --secondary-color-m: #f6f2d4a8
-    --tertiary-color: #95D1CC
-    --tertiary-color-m: #95d1cca8
+    --primary-color: #22577E;
+    --secondary-color: #F6F2D4;
+    --secondary-color-m: #f6f2d4a8;
+    --tertiary-color: #95D1CC;
+    --tertiary-color-m: #95d1cca8;
     
 }
 
@@ -28,7 +38,7 @@ body {
     display: flex; /* so that sidebar one side and other thing on other side*/
 }
 
-/* Sidebar nav */
+/* Sidebar navs */
 
 .sidebar-nav {
     position: sticky;
@@ -38,11 +48,170 @@ body {
 }
 
 .sidebar-nav .container {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color)
 }
 
 .sidebar-nav .container .logo img {
     width: calc(3vw + 3vh);
+}
+
+.sidebar-nav .container .social-links {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.sidebar-nav .container .social-links a i {
+    font-size: calc(2rem + 1vw);
+    color: white;
+    margin-bottom: calc(1rem + 1vw);
+
+    transition: color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+.sidebar-nav .container .social-links a i:hover,
+.sidebar-nav .container .social-links a i:active {
+    color: var(--secondary-color-m);
+}
+
+
+/* Main Nav */
+main {
+    flex: 1; 
+}
+
+header {
+    height: calc(3vw + 3vh);
+    background-color: var(--tertiary-color);
+}
+
+.main-nav {
+   height: 100%;
+}
+
+.main-nav .site-links {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.main-nav .site-links li a {
+    margin: calc(1rem + 1vw);
+    font-size: calc(1rem + 1vw);
+    color: var(--primary-color);
+    position: relative;
+}
+
+.main-nav .site-links li a:link::before,
+.main-nav .site-links li a:active::before,
+.main-nav .site-links li a:link::after,
+.main-nav .site-links li a:active::after {
+    content: " ";
+
+    width: 100%;
+    height: 0.25rem;
+
+    position: absolute;
+    left: 0;
+    background-color: var(--primary-color);
+
+    transform: scaleX(0);
+    transition: transform 1s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.main-nav .site-links li a:link::before,
+.main-nav .site-links li a:active::before {
+    top: 0;
+}
+
+.main-nav .site-links li a:link::after,
+.main-nav .site-links li a:active::after {
+    bottom: 0;
+}
+
+.main-nav .site-links li a:hover::before,
+.main-nav .site-links li a:active::before,
+.main-nav .site-links li a:hover::after,
+.main-nav .site-links li a:active::after {
+    transform: scaleX(1);
+}
+
+/* .main-nav .site-links li a:hover::before,
+.main-nav .site-links li a:active::before {
+    transform-origin: left;
+}
+
+.main-nav .site-links li a:hover::after,
+.main-nav .site-links li a:active::after {
+    transform-origin: right;
+} */
+
+
+/*************** Screen size below 640px ************/
+
+@media screen and (max-width: 640px) {
+    /*************** Main nav hamburger menu ************/
+    header {
+        position: absolute;
+       }
+
+    .main-nav {
+        position: fixed;
+        right: -100rem;  
+        /* first need to hide the hamburger menu thats why we gave right: -1000, then when we click on the hamburger menu it should be back */
+        height: 100%;
+        width: 100%;
+        background-color: var(--tertiary-color-m);
+        transition: right 0.3s ease-in-out;
+    }
+
+    .main-nav.collapse {
+        right: 0;  /* When we use collapse the menu pop up */
+    }
+
+    .main-nav .hamburger {
+        width: 3rem;
+        height: 3rem;
+        background-color: var(--primary-color);
+
+        position: fixed;
+        right: 1rem;
+        top: 1rem;
+        padding: 0.6rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        cursor: pointer;
+
+        /* border-radius: 50%;   If you need to make it circular then use this */
+    }
+
+    .hamburger .line {
+        width: 100%;
+        height: 0.25rem;
+        background-color: white;
+        border-radius: 0.25rem;
+
+    }
+
+    .main-nav .site-links {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main-nav .site-links li a {
+        font-size: calc(2rem + 1vw);
+    }
+    
 }
