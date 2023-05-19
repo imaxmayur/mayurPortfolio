@@ -38,7 +38,7 @@ body {
     display: flex; /* so that sidebar one side and other thing on other side*/
 }
 
-/* Sidebar navs */
+/* Sidebar navigation's */
 
 .sidebar-nav {
     position: sticky;
@@ -154,6 +154,14 @@ header {
     transform-origin: right;
 } */
 
+/*************** Hero section ************/
+
+/* .hero {
+    height: 100vh;
+    background-color: var(--primary-color);
+    background-image: url(/images/bgimage.png);
+} */
+
 
 /*************** Screen size below 640px ************/
 
@@ -166,7 +174,7 @@ header {
     .main-nav {
         position: fixed;
         right: -100rem;  
-        /* first need to hide the hamburger menu thats why we gave right: -1000, then when we click on the hamburger menu it should be back */
+        /* first need to hide the hamburger menu thats why we gave right: -100rem, then when we click on the hamburger menu it should be back */
         height: 100%;
         width: 100%;
         background-color: var(--tertiary-color-m);
